@@ -1,0 +1,6 @@
+query MarketCategoryQuery($exclude_empty:Boolean!){
+  marketplaceCategories(excludeEmpty:$exclude_empty) {
+      name
+      slug
+	}
+}

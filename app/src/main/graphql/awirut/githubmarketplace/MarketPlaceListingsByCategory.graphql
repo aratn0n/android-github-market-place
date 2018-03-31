@@ -1,0 +1,10 @@
+query MarketPlaceListingsByCategory($number_of_repos:Int!, $category:String!){
+  marketplaceListings(categorySlug: $category, first: $number_of_repos) {
+       nodes {
+        name
+        normalizedShortDescription
+        url
+        logoUrl
+       }
+  }
+}

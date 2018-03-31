@@ -1,0 +1,51 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.1.0'
+        classpath 'com.apollographql.apollo:apollo-gradle-plugin:0.4.4'
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+    }
+
+    ext {
+        minSdk = 15
+        targetSdk = 25
+        buildToolsVersion = '27.0.1'
+        compileSdkVersion = 27
+
+        javaSourceCompatibility = JavaVersion.VERSION_1_8
+        javaTargetCompatibility = JavaVersion.VERSION_1_8
+
+        // Libraries
+        supportLibVersion = '27.1.0'
+        materialDialogVersion = '0.9.6.0'
+        rxjava2Version = '2.1.12'
+        rxAndroid2Version = '2.0.2'
+        mosbyVersion = '3.1.0'
+
+        butterknifeVersion = '8.8.1'
+        timberVersion = '4.7.0'
+        okhttpVersion = '3.10.0'
+        dagger2Version = '2.15'
+        apolloVersion = '0.4.4'
+        glideVersion = '4.6.1'
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
