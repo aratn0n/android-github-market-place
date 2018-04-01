@@ -9,7 +9,7 @@ public class FragmentUtil {
     public static void addFragment(FragmentManager fragmentManager, Fragment fragment, int layoutId, String tag, boolean addToBackStack)
     {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction ();
-        fragmentTransaction.add (layoutId, fragment);
+        fragmentTransaction.add (layoutId, fragment, tag);
 
         if(addToBackStack)
             fragmentTransaction.addToBackStack(tag);

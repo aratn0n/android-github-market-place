@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import awirut.githubmarketplace.R;
 import awirut.githubmarketplace.util.FragmentUtil;
+import timber.log.Timber;
 
 public class HomeActivity extends AppCompatActivity implements MarketCategoryDialog.MarketCategoryDialogListener {
 
@@ -20,11 +21,11 @@ public class HomeActivity extends AppCompatActivity implements MarketCategoryDia
 
     private void createHomeFragment()
     {
-        homeFragment = (HomeFragment) FragmentUtil.getFragment(getSupportFragmentManager(),
-                        HomeFragment.TAG);
+        homeFragment = (HomeFragment) FragmentUtil.getFragment(getSupportFragmentManager(), HomeFragment.TAG);
 
         if(homeFragment == null)
         {
+            Timber.d("create home fragment");
             homeFragment = HomeFragment.create();
             FragmentUtil.addFragment(getSupportFragmentManager(),
                     homeFragment,

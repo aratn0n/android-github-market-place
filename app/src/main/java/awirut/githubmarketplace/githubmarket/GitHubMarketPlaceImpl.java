@@ -24,7 +24,7 @@ import io.reactivex.schedulers.Schedulers;
 
 public class GitHubMarketPlaceImpl implements GitHubMarketPlace {
 
-    ApolloClient apolloClient;
+    private ApolloClient apolloClient;
     private List<MarketPlaceCategory> marketPlaceCategories;
     public GitHubMarketPlaceImpl(ApolloClient apolloClient){
         this.apolloClient = apolloClient;

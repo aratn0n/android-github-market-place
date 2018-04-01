@@ -38,10 +38,17 @@ public class AppModule {
 
     @Provides
     @DaggerScope.ApplicationScope
+    public Context provideContext()
+    {
+        return appContext;
+    }
+
+    @Provides
+    @DaggerScope.ApplicationScope
     @Named(GIT_HUB_TOKEN_TAG)
     public String provideGitHubToken()
     {
-        return "write your token here";
+        return "GitHub access token";
     }
 
     @Provides
@@ -89,6 +96,7 @@ public class AppModule {
                 .build();
     }
 
+    //Need to provide custom adapter for URI because Apollo doesn't support it by default
     @Provides
     @DaggerScope.ApplicationScope
     public CustomTypeAdapter<URI> provideCustomTypeAdapterOfURI()

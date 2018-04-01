@@ -1,5 +1,6 @@
 package awirut.githubmarketplace.home.view;
 
+import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -19,6 +20,8 @@ import com.hannesdorfmann.mosby3.mvp.MvpFragment;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.inject.Inject;
 
 import awirut.githubmarketplace.App;
 import awirut.githubmarketplace.MarketPlaceListingsAllQuery;
@@ -54,6 +57,9 @@ public class HomeFragment extends MvpFragment<HomeView, HomePresenter> implement
     @BindView(R.id.filter_image_view)
     ImageView filterImageView;
 
+    @Inject
+    Context context;
+
     public static HomeFragment create()
     {
         return new HomeFragment();
@@ -66,6 +72,8 @@ public class HomeFragment extends MvpFragment<HomeView, HomePresenter> implement
 
         marketListingAllAdapter = new MarketListingAllAdapter(this);
         marketListingByCategoryAdapter = new MarketListingByCategoryAdapter(this);
+
+        App.getInstance().getAppComponent().inject(this);
     }
 
     @NonNull
@@ -80,14 +88,14 @@ public class HomeFragment extends MvpFragment<HomeView, HomePresenter> implement
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         ButterKnife.bind(this, view);
 
-        marketListingAllRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        marketListingAllRecyclerView.setLayoutManager(new LinearLayoutManager(context));
         marketListingAllRecyclerView.setAdapter(marketListingAllAdapter);
 
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(marketListingAllRecyclerView.getContext(),
                 DividerItemDecoration.VERTICAL);
         marketListingAllRecyclerView.addItemDecoration(dividerItemDecoration);
 
-        marketListingByCategoryRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        marketListingByCategoryRecyclerView.setLayoutManager(new LinearLayoutManager(context));
         marketListingByCategoryRecyclerView.setAdapter(marketListingByCategoryAdapter);
 
         dividerItemDecoration = new DividerItemDecoration(marketListingByCategoryRecyclerView.getContext(),
@@ -100,8 +108,8 @@ public class HomeFragment extends MvpFragment<HomeView, HomePresenter> implement
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
+    public void onStart() {
+        super.onStart();
 
         presenter.queryMarketLists();
         presenter.queryMarketListings();
@@ -201,6 +209,6 @@ public class HomeFragment extends MvpFragment<HomeView, HomePresenter> implement
     public void openMarketListingItemWebPage(String url) {
         CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
         CustomTabsIntent customTabsIntent = builder.build();
-        customTabsIntent.launchUrl(getContext(), Uri.parse(url));
+        customTabsIntent.launchUrl(context, Uri.parse(url));
     }
 }
