@@ -209,6 +209,6 @@ public class HomeFragment extends MvpFragment<HomeView, HomePresenter> implement
     public void openMarketListingItemWebPage(String url) {
         CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
         CustomTabsIntent customTabsIntent = builder.build();
-        customTabsIntent.launchUrl(context, Uri.parse(url));
+        customTabsIntent.launchUrl(getContext(), Uri.parse(url));
     }
 }

@@ -19,4 +19,4 @@ Provide your `GitHub access token` from `provideGitHubToken()` inside `AppModule
 How does it work?
 -------------------
 * The application uses generated codes from Apollo which generates Java code from GitHub's GraphQL.
-* The numbers of results (Currently are 10) can be changed from `GitHubMarketPlaceImpl.java`
+* The numbers of results can be changed when calling query methods from `GitHubMarketPlaceImpl.java`
